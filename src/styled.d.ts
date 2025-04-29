@@ -23,6 +23,11 @@ declare module 'styled-components' {
         };
         borderRadius: {
             default: string;
+        };
+        layout: {
+            width:{
+                [key in LayoutWidth]: string
+            }
         }
     };
 }
