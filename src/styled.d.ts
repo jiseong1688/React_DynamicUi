@@ -2,10 +2,27 @@ import 'styled-components';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        color: {
-        background: string;
-        primary: string;
-        // 필요한 컬러 계속 추가
+        name: ThemeName;
+        color: Record<ColorKey, string>;
+        heading: {
+            [key in HeadingSize]: {
+                fontSize: string;
+            };
         };
-    }
+        button: {
+            [key in ButtonSize]: {
+                fontSize: string;
+                padding: string;
+            };
+        };
+        buttonScheme: {
+            [key in ButtonScheme]: {
+                color: string;
+                backgroundColor: string;
+            };
+        };
+        borderRadius: {
+            default: string;
+        }
+    };
 }

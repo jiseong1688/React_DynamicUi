@@ -19,7 +19,7 @@ export const state = {
 export const ThemeContext = createContext<State>(state);
 
 export const BookSotreThemeProvider = ({children}:{children: ReactNode}) =>{
-    const [themeName, setThemeName] = useState<ThemeName>("dark");
+    const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME_NAME);
 
     const toggleTheme = () =>{
         setThemeName(themeName==="light" ? "dark":"light");
