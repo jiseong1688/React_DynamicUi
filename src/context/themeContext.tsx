@@ -22,13 +22,13 @@ export const BookSotreThemeProvider = ({children}:{children: ReactNode}) =>{
     const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME_NAME);
 
     const toggleTheme = () =>{
-        setThemeName(themeName==="light" ? "dark":"light");
-        localStorage.setItem(THEME_LOCALSTORAGE_KEY,themeName === "light" ? "dark":"light");
+        setThemeName(themeName==='light' ? 'dark':'light');
+        localStorage.setItem(THEME_LOCALSTORAGE_KEY,themeName === 'light' ? 'dark':'light');
     };
 
     useEffect(()=>{
         const savedThemeName = localStorage.getItem(THEME_LOCALSTORAGE_KEY) as ThemeName;
-        localStorage.setItem(THEME_LOCALSTORAGE_KEY,savedThemeName || DEFAULT_THEME_NAME)
+        setThemeName(savedThemeName || THEME_LOCALSTORAGE_KEY);
     },[]);
 
     return (

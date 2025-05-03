@@ -42,7 +42,7 @@ export const light: Theme = {
         background: 'lightgray',
         secondary: "#5F5F5F",
         third: "green",
-        border: "grey",
+        border: "gray",
         text:"black"
     },
     heading:{
@@ -73,11 +73,11 @@ export const light: Theme = {
     buttonScheme:{
         primary: {
             color: "white",
-            backgroundColor: "midnightblur"
+            backgroundColor: "midnightblue"
         },
         normal:{
             color: "black",
-            backgroundColor: "lightgrey"
+            backgroundColor: "lightgray"
         }
     },
     borderRadius: {
@@ -100,8 +100,8 @@ export const dark:Theme = {
         background: 'midnightblue',
         secondary: "darkblue",
         third: "darkgreen",
-        border: "grey",
-        text:"white"
+        border: "gray",
+        text:"balck"
     }
 };
 
