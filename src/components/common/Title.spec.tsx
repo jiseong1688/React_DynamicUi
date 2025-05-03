@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import Title from './Title'
-import { BookSotreThemeProvider } from '../../context/themeContext';
+import { BookStoreThemeProvider } from '../../context/themeContext';
 
 describe("Title 컴포넌트 테스트",()=>{
     it("렌더를 확인", ()=>{
         // 1. 렌더
         render(
-        <BookSotreThemeProvider>
+        <BookStoreThemeProvider>
             <Title size="large">제목</Title>
-        </BookSotreThemeProvider>);
+        </BookStoreThemeProvider>);
 
         // 2. 확인
         expect(screen.getByText('제목')).toBeInTheDocument();
@@ -16,9 +16,9 @@ describe("Title 컴포넌트 테스트",()=>{
 
     it('size props 적용', ()=>{
         const { container} = render(
-            <BookSotreThemeProvider>
+            <BookStoreThemeProvider>
                 <Title size="large">제목</Title>
-            </BookSotreThemeProvider>
+            </BookStoreThemeProvider>
         );
 
         expect(container?.firstChild).toHaveStyle({ fontSize: "2rem"});
@@ -26,9 +26,9 @@ describe("Title 컴포넌트 테스트",()=>{
 
     it("color props 적용", ()=>{
         const { container} = render(
-            <BookSotreThemeProvider>
+            <BookStoreThemeProvider>
                 <Title size="large">제목</Title>
-            </BookSotreThemeProvider>
+            </BookStoreThemeProvider>
         );
 
         expect(container?.firstChild).toHaveStyle({ color: "brown"});

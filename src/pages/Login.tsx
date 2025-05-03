@@ -4,16 +4,16 @@ import InputText from "../components/common/InputText";
 import Button from "../components/common/Button";
 import { Link, useNavigate } from "react-router-dom";
 import {useForm} from "react-hook-form"
-import { signup } from "../api/auth.api";
+import { login } from "../api/auth.api";
 import { useAlert } from "../hooks/useAlert";
+import { SignupProps } from "./Signup";
+import { useAuthStore } from "../store/authStore";
 
-export interface SignupProps {
-    email: string;
-    password: string;
-}
-const Signup = () => {
+const Login = () => {
     const navigate = useNavigate();
     const showAlert = useAlert();
+
+    const {storeLogin} = useAuthStore();
 
     const {
         register,
@@ -22,19 +22,20 @@ const Signup = () => {
     } = useForm<SignupProps>();
 
     const onSubmit = (data: SignupProps)=>{
-        signup(data).then((res)=>{
+        login(data).then((res)=>{
             // 성공
-            showAlert('회원가입이 완료되었습니다.')
-            navigate("/login")
+            storeLogin(res.token);
+            showAlert('로그인이 완료되었습니다.')
+            navigate("/")
+        }, (error)=>{
+            showAlert('로그인이 실패하였습니다.')
         })
     }
 
-    console.log(errors)
-
     return (
         <>
-            <Title size="large">회원가입</Title>
-            <SignupStyle>
+            <Title size="large">로그인</Title>
+            <LoginStyle>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <fieldset>
                         <InputText 
@@ -54,19 +55,22 @@ const Signup = () => {
                     </fieldset>
                     <fieldset>
                         <Button type="submit" size="medium" scheme="primary">
-                            회원가입
+                            로그인
                         </Button>
                     </fieldset>
                     <div className="info">
                         <Link to="/reset">비밀번호 초기화</Link>
                     </div>
+                    <div className="info">
+                        <Link to="/signup">회원가입</Link>
+                    </div>
                 </form>
-            </SignupStyle>
+            </LoginStyle>
         </>
     );
 }
 
-export const SignupStyle = styled.div`
+export const LoginStyle = styled.div`
     max-width: ${({ theme }) => theme.layout.width.small};
     margin: 80px auto;
 
@@ -92,4 +96,4 @@ export const SignupStyle = styled.div`
     }
 `
 
-export default Signup;
+export default Login;

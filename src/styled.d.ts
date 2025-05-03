@@ -1,33 +1,39 @@
 import 'styled-components';
+import { ThemeName } from './style/theme';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
         name: ThemeName;
-        color: Record<ColorKey, string>;
+        color: {
+            background: string;
+            primary: string;
+            secondary: string;
+            third: string;
+            border: string;
+            text: string;
+        };
         heading: {
-            [key in HeadingSize]: {
-                fontSize: string;
-            };
+            large: { fontSize: string };
+            medium: { fontSize: string };
+            small: { fontSize: string };
         };
         button: {
-            [key in ButtonSize]: {
-                fontSize: string;
-                padding: string;
-            };
+            small: { fontSize: string; padding: string };
+            medium: { fontSize: string; padding: string };
+            large: { fontSize: string; padding: string };
         };
         buttonScheme: {
-            [key in ButtonScheme]: {
-                color: string;
-                backgroundColor: string;
+            primary: { color: string; backgroundColor: string };
+            normal: { color: string; backgroundColor: string };
+            like: { color: string; backgroundColor: string };
+        };
+        borderRadius: { default: string };
+        layout: {
+            width: {
+                large: string;
+                medium: string;
+                small: string;
             };
         };
-        borderRadius: {
-            default: string;
-        };
-        layout: {
-            width:{
-                [key in LayoutWidth]: string
-            }
-        }
-    };
+    }
 }
