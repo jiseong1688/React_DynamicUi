@@ -20,7 +20,7 @@ function BooksList({books}:Props) {
             setView(params.get(QUERYSTRING.VIEW) as ViewMode);
         }
     },[location.search])
-    
+
     return (
         <BooksListStyle view={view}>
             {books?.map((item) => (

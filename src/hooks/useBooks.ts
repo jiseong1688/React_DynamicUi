@@ -27,7 +27,6 @@ export const useBooks = () =>{
             currentPage: params.get(QUERYSTRING.PAGE) ? Number(params.get(QUERYSTRING.PAGE)): 1,
             limit: LIMIT,
         }).then(({books, pagination})=>{
-            console.log(pagination)
             setBooks(books);
             setPagination(pagination);
             setIsEmpty(books.length === 0);

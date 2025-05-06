@@ -7,8 +7,6 @@ export const useCategory = ()=>{
     const location = useLocation();
     const [category, setCategory] = useState<Category[]>([]);
 
-    console.log('location', location.search);
-
     const setActive = () =>{
         const parmas = new URLSearchParams(location.search);
         if(parmas.get('category_id')){

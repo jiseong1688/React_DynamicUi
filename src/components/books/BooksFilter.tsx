@@ -10,7 +10,6 @@ function BooksFilter() {
 
     const handleCategory = (id:number |null) =>{
         const newSearchParams = new URLSearchParams(searchParams);
-        console.log(id)
         if(id===null) {
             newSearchParams.delete(QUERYSTRING.CATEGORY_ID);
         } else {

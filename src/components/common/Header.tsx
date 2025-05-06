@@ -7,7 +7,7 @@ import { useAuthStore } from "../../store/authStore"
 
 function Header() {
     const {category} = useCategory();
-    const {isloggedIn,storeLogout} = useAuthStore();
+    const {isLoggedIn,storeLogout} = useAuthStore();
 
     return (
     <HeaderStyle>
@@ -32,7 +32,7 @@ function Header() {
             </ul>
         </nav>
         <nav className="auth">
-            {isloggedIn && (
+            {isLoggedIn && (
                 <ul>
                     <li>
                         <Link to="/cart">장바구니</Link>
@@ -45,7 +45,7 @@ function Header() {
                     </li>
                 </ul>
             )}
-            {!isloggedIn && (<ul>
+            {!isLoggedIn && (<ul>
                 <li>
                     <Link to="/login">
                         <FaSignInAlt/>로그인
