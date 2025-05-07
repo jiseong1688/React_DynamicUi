@@ -4,16 +4,15 @@ import InputText from "../common/InputText";
 import Button from "../common/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useBook } from "../../hooks/useBook";
 
 interface Props {
     book: BookDetail
+    addToCart: (qty:number)=>void;
+    cartAdded:boolean;
 }
 
-function AddToCart({book}:Props){
+function AddToCart({book, addToCart, cartAdded}:Props){
     const [quantity, setQuantity] = useState<number>(1);
-    // const [cartAdded, setCartAdded] = useState(false);
-    const {addToCart, cartAdded} = useBook(book.id.toString());
     
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
         setQuantity(Number(e.target.value));
@@ -27,6 +26,7 @@ function AddToCart({book}:Props){
         if (quantity === 1) return;
         setQuantity(quantity -1);
     }
+    
 
     return (
         <AddToCartStyle $added={cartAdded}>
@@ -39,7 +39,7 @@ function AddToCart({book}:Props){
                     -
                 </Button>
             </div>
-            <Button size="medium" scheme="normal" onClick={() => {addToCart(quantity)}}>
+            <Button size="medium" scheme="primary" onClick={()=>{addToCart(quantity)}}>
                 장바구니 담기
             </Button>
             {cartAdded && (

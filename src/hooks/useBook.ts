@@ -10,7 +10,7 @@ export const useBook = (bookId: string | undefined) => {
     const [cartAdded, setCartAdded] = useState(false);
     
     const { isLoggedIn } = useAuthStore();
-    const showAlert = useAlert();
+    const {showAlert} = useAlert();
 
     const likeToggle = () => {
         // 권한 확인
@@ -44,10 +44,11 @@ export const useBook = (bookId: string | undefined) => {
     };
 
     const addToCart = (quantity: number) => {
+
         if(!book) return;
 
         addCart({
-            book_id: book.id,
+            book_id: Number(bookId),
             quantity: quantity
         }).then(() => {
             setCartAdded(true);
@@ -60,7 +61,7 @@ export const useBook = (bookId: string | undefined) => {
 
     useEffect(() => {
 
-        if(!bookId) return;
+        if(!bookId || Number(bookId) <= 0 ) return;
 
         fetchbook(bookId).then((book) => {
             setBook(book);

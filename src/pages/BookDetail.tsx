@@ -42,11 +42,11 @@ const bookInfoList = [
 ]
 
 function BookDetail(){
-    const {bookId} = useParams();   
-    const {book, likeToggle} = useBook(bookId);
+    const {bookId} = useParams<{bookId: string}>(); 
+    const {book, likeToggle, addToCart, cartAdded} = useBook(bookId);
     
     if(!book) return null;
-    
+    console.log("bookID:",book.id)
     return (
         <BookDetailStyle>
             <header className="header">
@@ -58,7 +58,7 @@ function BookDetail(){
                         {book.title}
                     </Title>
                     {bookInfoList.map((item,idx)=>(
-                        <dl key={item.key}>
+                        <dl key={idx}>
                             <dt>{item.label}</dt>
                             <dd>{item.filter ? item.filter(book) : book[item.key as keyof IBookDetail]}</dd>
                         </dl>
@@ -69,7 +69,7 @@ function BookDetail(){
                     <div className="like">
                         <LikeButton book={book} onClick={likeToggle}/>
                     </div>
-                    <AddToCart book={book} />
+                    <AddToCart book={book} addToCart={addToCart} cartAdded={cartAdded}/>
                 </div>
             </header>
             <div className="content">

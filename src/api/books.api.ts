@@ -31,7 +31,7 @@ export const fetchBooks = async (params:FetchBooksParams)=>{
     }
 }
 
-export const fetchbook = async(bookId: string | undefined)=>{
+export const fetchbook = async(bookId: string)=>{
     const response = await httpClient.get<BookDetail>(`/books/${bookId}`);
     return response.data;
 }

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { ButtonScheme, ButtonSize } from "../../style/theme";
 
@@ -10,13 +11,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     onClick?: ()=> void;
 }
 
-function Button({children, size, scheme, disabled, isLoading, onClick}:Props) {
+const Button = forwardRef<HTMLButtonElement, Props>(
+    ({ size, scheme, isLoading, children, disabled, onClick, ...rest }, ref) => {
     return (
         <ButtonStyle size={size} scheme={scheme} disabled={disabled} isLoading={isLoading} onClick={onClick}>
             {children}
         </ButtonStyle>
-    )
-}
+    )}
+)
 
 const ButtonStyle = styled.button<Omit<Props,"children">>`
     font-size: ${({theme, size})=>theme.button[size].fontSize};
