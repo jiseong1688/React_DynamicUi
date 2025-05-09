@@ -17,10 +17,9 @@ interface DeliveryForm extends Delivery {
 function Order() {
     const { showAlert, showConfirm } = useAlert();
     const location = useLocation();
-    const  navigate = useNavigate();
     const orderDataFromCart = location.state;
-    const { totalQuantity, totalPrice, firstBookTitle } = orderDataFromCart;
-
+    const  navigate = useNavigate();
+    const { totalPrice, totalQuantity, firstBookTitle } = orderDataFromCart;
     const { register, handleSubmit, setValue, formState: {errors} } = useForm<DeliveryForm>();
 
     const handlePay = (data: DeliveryForm) => {
@@ -41,7 +40,6 @@ function Order() {
         });
     };
 
-    console.log(orderDataFromCart);
     return (
         <>
             <Title size="large">주문서 작성</Title>
@@ -57,7 +55,7 @@ function Order() {
                             <div className="input">
                                 <InputText inputType="text" {...register("address", { required: true })} />
                             </div>
-                            <FindAddressButton onCompleted={(address) => {setValue('address', address);}} />
+                            <FindAddressButton onCompleted={address => setValue('address', address)} />
                         </fieldset>
                         {errors.address && <p className="error-text">주소를 입력해주세요.</p>}
 

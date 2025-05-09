@@ -86,13 +86,15 @@ function Cart() {
                         </div>
                     </>
                 )}
-                {isEmpty && <Empty title="장바구니가 비었습니다."  
-                                icon={<FaShoppingCart/>} 
-                                description={
-                                    <>
-                                    장바구니를 채워보세요.
-                                    </>
-                                }/>}
+                {isEmpty && <div className="content">
+                                <Empty title="장바구니가 비었습니다."  
+                                        icon={<FaShoppingCart/>} 
+                                        description={
+                                        <>
+                                        장바구니를 채워보세요.
+                                        </>
+                                    }/>
+                            </div>}
             </CartStyle>
         </>
     );

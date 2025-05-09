@@ -4,20 +4,17 @@ export interface Order{
     address: string;
     receiver: string;
     contact: string;
-    bookTitle: string;
-    totalQuantity: number;
-    totalPrice: number;
+    book_title: string;
+    total_quantity: number;
+    total_price: number;
 }
+
 export interface OrderSheet {
     items: number[];
     totalQuantity: number;
     totalPrice: number;
     firstBookTitle: string;
-    delivery: {
-        address: string;
-        receiver: string;
-        contact: string;
-    };
+    delivery: Delivery;
 }
 
 export interface Delivery {

@@ -4,6 +4,8 @@ import { useOrders } from "../hooks/useOrders";
 import { formatDate, formatNumber } from "../utils/format";
 import Button from "../components/common/Button";
 import React from "react";
+import Empty from "../components/common/Empty";
+import { FaShopify } from "react-icons/fa";
 
 function OrderList() {
     const { orders, selectedItemId, selectOrderItem } = useOrders();
@@ -12,7 +14,7 @@ function OrderList() {
         <>
             <Title size="large">주문 내역</Title>
             <OrderListStyle>
-                <table>
+                {orders?.length ? <table>
                     <thead>
                         <tr> 
                             <th>id</th>
@@ -36,9 +38,9 @@ function OrderList() {
                                         <td>{order.address}</td>
                                         <td>{order.receiver}</td>
                                         <td>{order.contact}</td>
-                                        <td>{order.bookTitle}</td>
-                                        <td>{order.totalQuantity} 권</td>
-                                        <td>{formatNumber(order.totalPrice)} 원</td>
+                                        <td>{order.book_title}</td>
+                                        <td>{order.total_quantity} 권</td>
+                                        <td>{formatNumber(Number(order.total_price))} 원</td>
                                         <td>
                                             <Button size="small" scheme="normal" onClick={() => selectOrderItem(order.id)}>자세히</Button>
                                         </td>
@@ -75,7 +77,16 @@ function OrderList() {
                             ))
                         }
                     </tbody>
-                </table>
+                </table>:
+                <div className="content">
+                <Empty title="주문 내역이 없습니다."  
+                        icon={<FaShopify/>} 
+                        description={
+                        <>
+                        책을 주문해봐요
+                        </>
+                    }/>
+            </div>}
             </OrderListStyle>
         </>
     );
