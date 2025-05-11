@@ -35,5 +35,10 @@ declare module 'styled-components' {
                 small: string;
             };
         };
+        mediaQuery: {
+            mobile: string;
+            tablet: string;
+            desktop: string;
+        };
     }
 }

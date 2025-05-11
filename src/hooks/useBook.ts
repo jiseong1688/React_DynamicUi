@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { BookDetail, BookReviewItem, BookReviewItemWrite } from "../models/book.model";
-import { fetchbook, likeBook, unlikeBook } from "../api/books.api";
+import { fetchBook, likeBook, unlikeBook } from "../api/books.api";
 import { useAuthStore } from "../store/authStore";
 import { useAlert } from "./useAlert";
 import { addCart } from "../api/carts.api";
@@ -69,7 +69,7 @@ export const useBook = (bookId: string | undefined) => {
 
         if(!bookId || Number(bookId) <= 0 ) return;
 
-        fetchbook(bookId).then((book) => {
+        fetchBook(bookId).then((book) => {
             setBook(book);
         })
         

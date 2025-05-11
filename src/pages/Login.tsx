@@ -33,7 +33,8 @@ const Login = () => {
                         <InputText 
                             inputType="email" 
                             placeholder="이메일"
-                            {...register("email",{required:true})}/>
+                            {...register("email",{required:true}) }
+                            inputMode="email"/>
                             {errors.email && <p className="error-text">
                                 이메일을 입력해주세요.</p>}
                     </fieldset>
@@ -41,7 +42,8 @@ const Login = () => {
                         <InputText
                             inputType="password" 
                             placeholder="비밀번호"
-                            {...register("password",{required:true})}/>
+                            {...register("password",{required:true})}
+                            inputMode="text"/>
                             {errors.password && <p className="error-text">
                                 비밀번호을 입력해주세요.</p>}
                     </fieldset>
@@ -86,6 +88,7 @@ export const LoginStyle = styled.div`
         text-align: center;
         padding: 16px 0 0 0;
     }
+    
 `
 
 export default Login;
